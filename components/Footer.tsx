@@ -22,12 +22,14 @@ const Footer: React.VFC = () => {
                 className="hover:underline"
                 href="https://natsuneko.fanbox.cc"
               >
-                Blog
+                {t("global.blog")}
               </ExternalLink>
             </div>
             <div className="mx-4">
               <InternalLink href="/privacy">
-                <a className="hover:underline">{t("privacy_and_cookie")}</a>
+                <a className="hover:underline">
+                  {t("global.privacy_and_cookie")}
+                </a>
               </InternalLink>
             </div>
             <div className="ml-4">&copy; Natsuneko Laboratory {year}</div>
