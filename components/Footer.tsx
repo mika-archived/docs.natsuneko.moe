@@ -1,13 +1,14 @@
 import React from "react";
 import InternalLink from "next/link";
+import { useTranslation } from "next-i18next";
 
 import ExternalLink from "./ExternalLink";
-import useLang from "../hooks/useLang";
+import { useRouter } from "next/router";
 
 const START_YEAR = 2022;
 
-const Footer: React.VFC<{}> = () => {
-  const lang = useLang();
+const Footer: React.VFC = () => {
+  const { t } = useTranslation("common");
   const now = new Date().getFullYear();
   const year = START_YEAR === now ? START_YEAR : `${START_YEAR} - ${now}`;
 
@@ -25,8 +26,8 @@ const Footer: React.VFC<{}> = () => {
               </ExternalLink>
             </div>
             <div className="mx-4">
-              <InternalLink href={`${lang}/privacy`}>
-                <a className="hover:underline">Privacy &amp; Cookie</a>
+              <InternalLink href="/privacy">
+                <a className="hover:underline">{t("privacy_and_cookie")}</a>
               </InternalLink>
             </div>
             <div className="ml-4">&copy; Natsuneko Laboratory {year}</div>

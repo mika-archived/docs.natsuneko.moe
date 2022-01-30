@@ -27,7 +27,11 @@ const withLayout = (
     );
   }
 
-  return <></>;
+  return (
+    <>
+      <Component />
+    </>
+  );
 };
 
 export default withLayout;
