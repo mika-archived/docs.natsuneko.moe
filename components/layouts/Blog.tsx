@@ -6,9 +6,9 @@ type Props = {
 
 const Layout: React.FC<Props> = ({ title, children }) => {
   return (
-    <div>
-      <h2>{title}</h2>
-      {children}
+    <div className="container mx-auto my-4">
+      <h2 className="text-4xl font-bold my-4">{title}</h2>
+      <div>{children}</div>
     </div>
   );
 };
