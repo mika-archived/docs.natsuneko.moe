@@ -1,7 +1,9 @@
 import React from "react";
 import Head from "next/head";
 import Script from "next/script";
+import { appWithTranslation } from "next-i18next";
 
+import nextI18nextConfig from "../next-i18next.config";
 import GlobalLayout from "../components/layouts/Global";
 
 import "../styles/globals.css";
@@ -23,4 +25,4 @@ const App = ({ Component, pageProps }) => {
   );
 };
 
-export default App;
+export default appWithTranslation(App, nextI18nextConfig);

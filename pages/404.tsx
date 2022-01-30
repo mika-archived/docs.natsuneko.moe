@@ -1,4 +1,14 @@
+import { GetStaticProps } from "next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import React from "react";
+
+const getStaticProps: GetStaticProps<{}> = async ({ locale }) => {
+  console.log(locale);
+
+  return {
+    props: { ...(await serverSideTranslations(locale, ["common"])) },
+  };
+};
 
 const NotFound: React.VFC = () => {
   return (
@@ -13,5 +23,7 @@ const NotFound: React.VFC = () => {
     </div>
   );
 };
+
+export { getStaticProps };
 
 export default NotFound;

@@ -12,7 +12,7 @@ const middleware: (request: NextRequest) => NextResponse | undefined = (
 
   return shouldHandleLocale
     ? NextResponse.redirect(
-        new URL(`/ja-jp/${request.nextUrl.pathname}`, request.url)
+        new URL(`/ja-JP/${request.nextUrl.pathname}`, request.url)
       )
     : NextResponse.next();
 };

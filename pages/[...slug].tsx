@@ -31,7 +31,7 @@ const getStaticPaths: GetStaticPaths<PathProps> = () => {
     slug: normalizePath(w.slug),
   }));
 
-  const locales = ["ja-jp", "en-us"];
+  const locales = ["ja-JP", "en-US"];
   const paths = entries.flatMap((w) =>
     locales.map((locale) => ({ params: { slug: w.slug }, locale }))
   );
