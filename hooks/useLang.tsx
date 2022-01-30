@@ -1,16 +1,9 @@
-import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 const useLang = () => {
-  const [lang, setLang] = useState("en-us");
+  const router = useRouter();
 
-  useEffect(() => {
-    const path = window.location.pathname;
-    const lang = path.split("/")[1];
-
-    setLang(lang);
-  }, []);
-
-  return lang;
+  return router.locale ?? "ja-JP";
 };
 
 export default useLang;

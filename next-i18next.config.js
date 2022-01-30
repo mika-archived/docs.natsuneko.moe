@@ -6,5 +6,6 @@ module.exports = {
     locales: ["default", "ja-JP", "en-US"],
     localeDetection: false,
   },
+  keySeparator: ".",
   localePath: path.resolve("./public/locales"),
 };

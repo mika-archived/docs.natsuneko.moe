@@ -22,6 +22,7 @@ const Wiki = defineDocumentType(() => ({
   fields: {
     title: { type: "string", required: true },
     date: { type: "date", required: true },
+    lang: { type: "string", required: false },
   },
   computedFields,
 }));
@@ -33,6 +34,7 @@ const Blog = defineDocumentType(() => ({
   fields: {
     title: { type: "string", required: true },
     date: { type: "date", required: true },
+    lang: { type: "string", required: false },
   },
   computedFields,
 }));
