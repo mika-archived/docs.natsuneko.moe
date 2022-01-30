@@ -1,4 +1,7 @@
 {
-  "blog": "ブログ",
-  "privacy_and_cookie": "プライバシー & Cookie"
+  "global": {
+    "blog": "ブログ",
+    "privacy_and_cookie": "プライバシー & Cookie",
+    "fallback_contents": "このトピックは対象の言語へ翻訳されていないため、元の言語のコンテンツを表示しています。"
+  }
 }
