@@ -1,10 +1,8 @@
+import React from "react";
 import { GetStaticProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import React from "react";
 
 const getStaticProps: GetStaticProps<{}> = async ({ locale }) => {
-  console.log(locale);
-
   return {
     props: { ...(await serverSideTranslations(locale, ["common"])) },
   };
