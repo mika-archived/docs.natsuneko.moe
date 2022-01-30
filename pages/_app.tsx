@@ -18,7 +18,7 @@ const App = ({ Component, pageProps }) => {
         <Component {...pageProps} />
       </GlobalLayout>
       <Script
-        src="https://kit.fontawesome.com/70c6fd74b5.js"
+        src="https://kit.fontawesome.com/691aea7802.js"
         crossOrigin="anonymous"
       />
     </>
