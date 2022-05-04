@@ -1,9 +1,9 @@
 import React from "react";
 import InternalLink from "next/link";
 
-import FontAwesome from "./FontAwesome/Icon";
-import ExternalLink from "./ExternalLink";
-import useLang from "../hooks/useLang";
+import ExternalLink from "components/ExternalLink";
+import FontAwesome from "components/FontAwesome/Icon";
+import useLang from "hooks/useLang";
 
 const Header: React.VFC = () => {
   const lang = useLang();
