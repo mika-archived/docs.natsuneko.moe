@@ -1,6 +1,7 @@
 import {
   ComputedFields,
   defineDocumentType,
+  defineNestedType,
   makeSource,
 } from "contentlayer/source-files";
 import readingTime from "reading-time";
@@ -18,11 +19,14 @@ const computedFields: ComputedFields = {
 const Wiki = defineDocumentType(() => ({
   name: "Wiki",
   filePathPattern: "wiki/**/*.mdx",
-  bodyType: "mdx",
+  contentType: "mdx",
   fields: {
     title: { type: "string", required: true },
     date: { type: "date", required: true },
     lang: { type: "string", required: false },
+    category: { type: "string", required: false },
+    priority: { type: "number", required: false },
+    sidebar: { type: "list", required: false, of: { type: "string" } },
   },
   computedFields,
 }));
@@ -30,7 +34,7 @@ const Wiki = defineDocumentType(() => ({
 const Blog = defineDocumentType(() => ({
   name: "Blog",
   filePathPattern: "blog/**/*.mdx",
-  bodyType: "mdx",
+  contentType: "mdx",
   fields: {
     title: { type: "string", required: true },
     date: { type: "date", required: true },

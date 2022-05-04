@@ -4,10 +4,10 @@ import Header from "../GlobalHeader";
 
 const Layout: React.FC = ({ children }) => {
   return (
-    <div className="text-zinc-300 bg-zinc-800  min-h-screen">
+    <div className="min-h-screen text-neutral-800">
       <div className="flex flex-col w-full min-h-screen">
         <Header />
-        <div className="flex flex-grow w-full">{children}</div>
+        <div className="flex flex-grow w-full h-full">{children}</div>
         <Footer />
       </div>
     </div>

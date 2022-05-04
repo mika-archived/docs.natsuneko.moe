@@ -13,7 +13,7 @@ const Header: React.VFC<Props> = ({ lang: contentLang }) => {
   return (
     <div>
       {lang !== contentLang && (
-        <header className="bg-purple-800/30 text-slate-200 min-h-full h-16 flex flex-col justify-center align-bottom">
+        <header className="flex flex-col justify-center h-16 min-h-full align-bottom bg-purple-800/30 text-neutral-800">
           <div className="container mx-auto">
             <p>{t("global.fallback_contents")}</p>
           </div>

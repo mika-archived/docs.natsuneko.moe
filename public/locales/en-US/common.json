@@ -3,5 +3,8 @@
     "blog": "Blog",
     "privacy_and_cookie": "Privacy & Cookie",
     "fallback_contents": "This topic has not been translated into the target language, so the content in the original language is shown."
+  },
+  "root": {
+    "title": "Natsuneko Laboratory Documentation"
   }
 }

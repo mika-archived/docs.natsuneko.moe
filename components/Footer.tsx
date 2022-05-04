@@ -3,7 +3,6 @@ import InternalLink from "next/link";
 import { useTranslation } from "next-i18next";
 
 import ExternalLink from "./ExternalLink";
-import { useRouter } from "next/router";
 
 const START_YEAR = 2022;
 
@@ -13,11 +12,11 @@ const Footer: React.VFC = () => {
   const year = START_YEAR === now ? START_YEAR : `${START_YEAR} - ${now}`;
 
   return (
-    <footer className="border-t border-zinc-600 bg-zinc-600">
+    <footer className="border-t text-neutral-200 border-neutral-600 bg-neutral-600">
       <div className="container mx-auto">
-        <div className="flex flex-row-reverse items-center h-32">
-          <div className="flex flex-row">
-            <div className="mx-4">
+        <div className="flex flex-row-reverse items-center h-24 ml-2 md:ml-0">
+          <div className="flex flex-row flex-wrap gap-x-4 gap-y-2">
+            <div>
               <ExternalLink
                 className="hover:underline"
                 href="https://natsuneko.fanbox.cc"
@@ -25,14 +24,14 @@ const Footer: React.VFC = () => {
                 {t("global.blog")}
               </ExternalLink>
             </div>
-            <div className="mx-4">
+            <div>
               <InternalLink href="/privacy">
                 <a className="hover:underline">
                   {t("global.privacy_and_cookie")}
                 </a>
               </InternalLink>
             </div>
-            <div className="ml-4">&copy; Natsuneko Laboratory {year}</div>
+            <div>&copy; Natsuneko Laboratory {year}</div>
           </div>
           <div className="flex-grow"></div>
         </div>

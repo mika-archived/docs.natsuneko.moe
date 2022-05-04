@@ -1,26 +1,28 @@
 import React from "react";
 
-import FallbackHeader from "../components/FallbackHeader";
-import BlogLayout from "../components/layouts/Blog";
-import WikiLayout from "../components/layouts/Wiki";
+import FallbackHeader from "components/FallbackHeader";
+import Markdown from "components/Markdown";
+import BlogLayout from "components/layouts/Blog";
+import WikiLayout from "components/layouts/Wiki";
 
 type Props = {
   layout: "Blog" | "Wiki";
   lang?: string;
   title: string;
+  sidebar?: string[];
   fallback: boolean;
 };
 
 const withLayout = (
   Component: React.ComponentType<any>,
-  { title, lang, layout, fallback }: Props
+  { title, lang, layout, fallback, sidebar }: Props
 ) => {
   if (layout === "Blog") {
     return (
-      <div className="flex flex-col w-full">
+      <div className="flex flex-col w-full h-full">
         {fallback && <FallbackHeader lang={lang} />}
         <BlogLayout title={title}>
-          <Component />
+          <Component components={{ ...Markdown }} />
         </BlogLayout>
       </div>
     );
@@ -30,8 +32,8 @@ const withLayout = (
     return (
       <div className="flex flex-col w-full">
         {fallback && <FallbackHeader lang={lang} />}
-        <WikiLayout title={title}>
-          <Component />
+        <WikiLayout title={title} sidebar={sidebar}>
+          <Component components={{ ...Markdown }} />
         </WikiLayout>
       </div>
     );
@@ -40,7 +42,7 @@ const withLayout = (
   return (
     <>
       {fallback && <FallbackHeader lang={lang} />}
-      <Component />
+      <Component components={{ ...Markdown }} />
     </>
   );
 };
