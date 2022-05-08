@@ -1,3 +1,5 @@
+import ExternalLink from "./ExternalLink";
+
 const Heading = (props: any, level: number) => {
   switch (level) {
     case 1:
@@ -28,6 +30,18 @@ const UnorderedList = ({ children }: any) => {
   return <ul className="pl-8 my-4 list-disc">{children}</ul>;
 };
 
+const OrderedList = ({ children }: any) => {
+  return <ol className="pl-8 my-4 list-decimal">{children}</ol>;
+};
+
+const Hyperlink = ({ children, href }: any) => {
+  return (
+    <ExternalLink href={href} hasUnderline>
+      {children}
+    </ExternalLink>
+  );
+};
+
 const Markdown = {
   h1: (props) => Heading(props, 1),
   h2: (props) => Heading(props, 2),
@@ -37,6 +51,8 @@ const Markdown = {
   h6: (props) => Heading(props, 6),
   p: Paragraph,
   ul: UnorderedList,
+  ol: OrderedList,
+  a: Hyperlink,
 };
 
 export default Markdown;
