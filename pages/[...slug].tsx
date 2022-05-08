@@ -51,9 +51,17 @@ const getStaticProps: GetStaticProps<PageProps, PathProps> = async ({
   params,
   locale,
 }) => {
-  const entry = [...allBlogs, ...allWikis].find((w) =>
-    isArrayEquals(normalizePath(w.slug), [...params.slug, locale])
-  );
+  const alLEntries = [...allBlogs, ...allWikis];
+  const entry =
+    alLEntries.find((w) => {
+      return isArrayEquals(
+        [...params.slug, locale],
+        [...normalizePath(w.slug), w.lang].filter((w) => w !== undefined)
+      );
+    }) ??
+    alLEntries.find((w) => {
+      return isArrayEquals([...params.slug], [...normalizePath(w.slug)]);
+    });
 
   const fallback = !/\.(ja-JP|en-US)\.mdx$/.exec(entry._raw.sourceFileName);
 

@@ -25,7 +25,16 @@ const extractLocale = (path: string[]): [string[], string] => {
   return [path, undefined];
 };
 
-const isArrayEquals = (a: string[], b: string[]): boolean =>
-  a.every((w) => b.includes(w));
+const isArrayEquals = (a: string[], b: string[]): boolean => {
+  if (a.length != b.length) return false;
+
+  let result = true;
+
+  for (let i = 0; i < a.length; i++) {
+    result = result && a[i] === b[i];
+  }
+
+  return result;
+};
 
 export { normalizePath, normalizeTitle, extractLocale, isArrayEquals };
