@@ -56,14 +56,14 @@ const Home: React.VFC<PageProps> = ({ categories }) => {
 
   return (
     <div className="flex flex-col w-full">
-      <div className="w-full h-32 bg-neutral-800 text-neutral-200">
+      <div className="w-full bg-neutral-800 text-neutral-200">
         <div className="container mx-auto my-8">
           <h2 className="text-4xl font-bold">{t("root.title")}</h2>
           <p>いろいろあるよ！</p>
         </div>
       </div>
       <div className="container mx-auto my-8">
-        <div className="flex flex-row flex-wrap gap-x-4">
+        <div className="flex flex-row flex-wrap gap-x-4 gap-y-2">
           {Object.keys(categories).map((key) => {
             const items = categories[key].sort(
               (a, b) => a.priority - b.priority
