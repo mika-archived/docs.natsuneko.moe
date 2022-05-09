@@ -64,7 +64,7 @@ const getStaticProps: GetStaticProps<PageProps, PathProps> = async ({
       return isArrayEquals([...params.slug], [...normalizePath(w.slug)]);
     });
   const hasCategory = (obj: Blog | Wiki): obj is Wiki => {
-    return Object.hasOwn(obj, "category");
+    return Object.prototype.hasOwnProperty.call(obj, "category");
   };
   const items = allWikis
     .filter((w) => {
