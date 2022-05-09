@@ -5,34 +5,24 @@ import { normalizePath, normalizeTitle } from "utils/contents";
 import { useRouter } from "next/router";
 
 type Props = {
-  items: string[];
+  items: { title: string; url: string }[];
 };
 
 const Sidebar: React.VFC<Props> = ({ items }) => {
   const router = useRouter();
 
-  const findItem = (url) => {
-    return allWikis.find(
-      (wiki) => `/${normalizePath(wiki.slug).join("/")}/` === url
-    );
-  };
-
   return (
     <div className="w-64 h-full px-2 pt-4 mr-4 border-r border-neutral-400">
       <div className="my-2">
-        <h4 className="text-xl font-bold">{findItem(items[0]).title}</h4>
+        <h4 className="text-xl font-bold">{items[0].title}</h4>
       </div>
       <ul>
-        {items.map((w) => {
-          const item = findItem(w);
-          if (item === undefined) return null;
-
-          const isVisit =
-            router.asPath === `/${normalizePath(item.slug).join("/")}/`;
+        {items.map((item) => {
+          const isVisit = router.asPath === `/${item.url}/`;
 
           return (
-            <li key={w} className="my-2 cursor-pointer">
-              <InternalLink href={w}>
+            <li key={item.url} className="my-2 cursor-pointer">
+              <InternalLink href={item.url}>
                 <p className={isVisit ? "text-orange-600 font-bold" : ""}>
                   {normalizeTitle(item.title)}
                 </p>

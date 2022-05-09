@@ -9,7 +9,7 @@ type Props = {
   layout: "Blog" | "Wiki";
   lang?: string;
   title: string;
-  sidebar?: string[];
+  sidebar?: { title: string; url: string }[];
   fallback: boolean;
 };
 

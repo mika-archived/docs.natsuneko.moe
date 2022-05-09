@@ -5,7 +5,7 @@ import { normalizePath, normalizeTitle } from "utils/contents";
 import { useRouter } from "next/router";
 
 type Props = {
-  items: string[];
+  items: { title: string; url: string }[];
   onClickItem: () => void;
 };
 
@@ -13,27 +13,25 @@ const FloatingSidebar: React.VFC<Props> = ({ items, onClickItem }) => {
   const router = useRouter();
 
   const findItem = (url) => {
-    return allWikis.find(
-      (wiki) => `/${normalizePath(wiki.slug).join("/")}/` === url
-    );
+    return items.find((wiki) => `/${wiki.url}/` === url);
   };
 
   return (
     <div className="w-full h-full min-h-full">
       <div className="my-2">
-        <h4 className="text-xl font-bold">{findItem(items[0]).title}</h4>
+        <h4 className="text-xl font-bold">{items[0].title}</h4>
       </div>
       <ul>
-        {items.map((w) => {
-          const item = findItem(w);
-          if (item === undefined) return null;
-
-          const isVisit =
-            router.asPath === `/${normalizePath(item.slug).join("/")}/`;
+        {items.map((item) => {
+          const isVisit = router.asPath === `/${item.url}/`;
 
           return (
-            <li key={w} className="my-2 cursor-pointer" onClick={onClickItem}>
-              <InternalLink href={w}>
+            <li
+              key={item.url}
+              className="my-2 cursor-pointer"
+              onClick={onClickItem}
+            >
+              <InternalLink href={item.url}>
                 <p className={isVisit ? "text-orange-600 font-bold" : ""}>
                   {normalizeTitle(item.title)}
                 </p>

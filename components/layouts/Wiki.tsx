@@ -8,7 +8,7 @@ import WikiHeader from "components/WikiHeader";
 
 type Props = {
   title: string;
-  sidebar?: string[];
+  sidebar?: { title: string; url: string }[];
 };
 
 const Layout: React.FC<Props> = ({ title, sidebar, children }) => {
@@ -27,7 +27,7 @@ const Layout: React.FC<Props> = ({ title, sidebar, children }) => {
       <Head>
         <title>{title} | Natsuneko Laboratory Docs</title>
       </Head>
-      <div className="flex flex-col w-full h-full mx-auto md:container md:flex-row">
+      <div className="flex flex-col w-full h-full pb-4 mx-auto md:container md:flex-row">
         {sidebar && (
           <>
             <div className="hidden shrink-0 md:block">

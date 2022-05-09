@@ -1,7 +1,6 @@
 import {
   ComputedFields,
   defineDocumentType,
-  defineNestedType,
   makeSource,
 } from "contentlayer/source-files";
 import readingTime from "reading-time";
@@ -26,7 +25,7 @@ const Wiki = defineDocumentType(() => ({
     lang: { type: "string", required: false },
     category: { type: "string", required: false },
     priority: { type: "number", required: false },
-    sidebar: { type: "list", required: false, of: { type: "string" } },
+    sidebar: { type: "boolean", required: false, default: false },
   },
   computedFields,
 }));

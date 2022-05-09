@@ -15,6 +15,7 @@ type PathProps = {
 
 type PageProps = {
   entry: Blog | Wiki;
+  sidebar: { title: string; url: string }[];
   fallback: boolean;
 };
 
@@ -62,6 +63,18 @@ const getStaticProps: GetStaticProps<PageProps, PathProps> = async ({
     alLEntries.find((w) => {
       return isArrayEquals([...params.slug], [...normalizePath(w.slug)]);
     });
+  const hasCategory = (obj: Blog | Wiki): obj is Wiki => {
+    return Object.hasOwn(obj, "category");
+  };
+  const items = allWikis
+    .filter((w) => {
+      if (hasCategory(w) && hasCategory(entry)) {
+        return entry.category === w.category;
+      }
+
+      return false;
+    })
+    .sort((a, b) => a.priority - b.priority);
 
   const fallback = !/\.(ja-JP|en-US)\.mdx$/.exec(entry._raw.sourceFileName);
 
@@ -69,12 +82,16 @@ const getStaticProps: GetStaticProps<PageProps, PathProps> = async ({
     props: {
       ...(await serverSideTranslations(locale, ["common"])),
       entry,
+      sidebar: items.map((w) => ({
+        title: w.title,
+        url: normalizePath(w.slug).join("/"),
+      })),
       fallback,
     },
   };
 };
 
-const Entry: React.VFC<PageProps> = ({ entry, fallback }) => {
+const Entry: React.VFC<PageProps> = ({ entry, sidebar, fallback }) => {
   const Component = useMDXComponent(entry.body.code, {
     h1: "",
   });
@@ -84,7 +101,7 @@ const Entry: React.VFC<PageProps> = ({ entry, fallback }) => {
     layout: entry.type,
     lang: entry.lang,
     fallback,
-    sidebar: (entry as any).sidebar,
+    sidebar: (entry as any).sidebar ? sidebar : undefined,
   });
 };
 
