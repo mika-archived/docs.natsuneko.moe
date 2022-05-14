@@ -42,6 +42,46 @@ const Hyperlink = ({ children, href }: any) => {
   );
 };
 
+const Table = ({ children }: any) => {
+  return (
+    <table className="block w-full max-w-full overflow-x-auto text-sm border-collapse shadow-sm table-auto border-zinc-400">
+      {children}
+    </table>
+  );
+};
+
+const TableData = ({ children, align }) => {
+  align =
+    align === "right"
+      ? "text-right"
+      : align === "left"
+      ? "text-left"
+      : "text-center";
+
+  return <td className={`border border-zinc-400 p-4 ${align}`}>{children}</td>;
+};
+
+const TableHead = ({ children }) => {
+  return <thead className="bg-zinc-200/75">{children}</thead>;
+};
+
+const TableHeader = ({ children, align }) => {
+  align =
+    align === "right"
+      ? "text-right"
+      : align === "left"
+      ? "text-left"
+      : "text-center";
+
+  return (
+    <th
+      className={`border border-zinc-400 font-semibold p-4 text-slate-900 ${align}`}
+    >
+      {children}
+    </th>
+  );
+};
+
 const Markdown = {
   h1: (props) => Heading(props, 1),
   h2: (props) => Heading(props, 2),
@@ -53,6 +93,10 @@ const Markdown = {
   ul: UnorderedList,
   ol: OrderedList,
   a: Hyperlink,
+  table: Table,
+  td: TableData,
+  th: TableHeader,
+  thead: TableHead,
 };
 
 export default Markdown;

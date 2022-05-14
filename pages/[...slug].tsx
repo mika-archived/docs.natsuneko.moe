@@ -1,8 +1,8 @@
 import React from "react";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { NextSeo } from "next-seo";
 import { allBlogs, allWikis } from "contentlayer/generated";
-
 import withLayout from "hoc/withLayout";
 import { normalizePath, extractLocale, isArrayEquals } from "utils/contents";
 
@@ -92,17 +92,20 @@ const getStaticProps: GetStaticProps<PageProps, PathProps> = async ({
 };
 
 const Entry: React.VFC<PageProps> = ({ entry, sidebar, fallback }) => {
-  const Component = useMDXComponent(entry.body.code, {
-    h1: "",
-  });
+  const Component = useMDXComponent(entry.body.code, {});
 
-  return withLayout(Component, {
-    title: entry.title,
-    layout: entry.type,
-    lang: entry.lang,
-    fallback,
-    sidebar: (entry as any).sidebar ? sidebar : undefined,
-  });
+  return (
+    <>
+      <NextSeo title={entry.title} />
+      {withLayout(Component, {
+        title: entry.title,
+        layout: entry.type,
+        lang: entry.lang,
+        fallback,
+        sidebar: (entry as any).sidebar ? sidebar : undefined,
+      })}
+    </>
+  );
 };
 
 export { getStaticPaths, getStaticProps };
