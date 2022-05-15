@@ -44,7 +44,7 @@ const Hyperlink = ({ children, href }: any) => {
 
 const Table = ({ children }: any) => {
   return (
-    <table className="block w-full max-w-full overflow-x-auto text-sm border-collapse shadow-sm table-auto border-zinc-400">
+    <table className="block max-w-full overflow-x-auto text-sm border-collapse table-auto border-zinc-400">
       {children}
     </table>
   );
