@@ -1,0 +1,18 @@
+---
+title: Animator Controller Tool Post Processing
+date: 2022/05/10
+lang: ja-JP
+category: Animator Controller Tool Post Processing
+priority: 0
+sidebar: true
+---
+
+Animator Controller Tool Post Processing は、 Unity の標準のアニメーター作成機能を、 VRChat 推奨の設定へと自動的に変更するためのツールです。  
+このツールを使用することで、 VRChat 用の Animator を作る上で引っかかりがちな設定ミスを回避することが出来ます。
+
+デフォルトでは、以下の機能を持っています。
+
+- Animator Window を開いている場合、新しいレイヤーを追加すると Weight を自動的に `1.0f` に設定
+- Animator Window を開いている場合、新しいステートを追加すると Write Defaults を `False` に設定 (VRChat 推奨設定)
+
+これらの機能はインストールした時点で自動的に有効になります。
