@@ -1,0 +1,23 @@
+---
+title: 使い方 - Animation Auto Assignment
+date: 2022/05/09
+lang: ja-JP
+category: Animation Auto Assignment
+priority: 2
+sidebar: true
+---
+
+Unity メニューバーから、 `Window > Natsuneko Laboratory` と進み、 `Animation Auto Assignment` をクリックして、専用のエディターを開いてください。  
+開いた後、トラッキング (追跡) したいアニメーションクリップと、それが設定されているルートととなる GameObject を設定します。  
+それぞれ、アニメーションクリップは `Tracking Animation` の `Animation` 欄に、 GameObject は `Animation Root Transform` の `Transform` に設定してください。  
+設定後、 `Start Tracking` をクリックすると、トラッキングが開始されます。
+
+トラッキングが行われている間、以下のような変更が自動追跡され、アニメーションクリップの内容が自動修正されます。
+
+- ヒエラルキー構造の変更 (移動)
+- リネーム
+
+なお、外部のツールなどを使って一括リネームなどを行った場合は、うまく追跡されない場合がありますのでご了承ください。
+
+`Stop Tracking` を押すことで、トラッキングをやめることが出来ます。  
+なお、アニメーションエディター上で変更が遅れて反映される場合がありますので、その場合は一旦別タブを開くなどすると反映されます。
