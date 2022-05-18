@@ -3,7 +3,7 @@ import InternalLink from "next/link";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { allWikis } from "contentlayer/generated";
-import { normalizePath, normalizeTitle } from "utils/contents";
+import { normalizePath, normalizeTitle, extractLocale } from "utils/contents";
 
 import type { GetStaticProps } from "next";
 
@@ -76,9 +76,12 @@ const Home: React.VFC<PageProps> = ({ categories }) => {
                   </h4>
                   <ul className="px-4 py-2">
                     {items.map((item) => {
+                      const [slug] = extractLocale(normalizePath(item.path));
+                      const url = slug.join("/");
+
                       return (
-                        <li key={item.path}>
-                          <InternalLink href={item.path}>
+                        <li key={url}>
+                          <InternalLink href={url}>
                             <p className="text-blue-700 cursor-pointer">
                               {normalizeTitle(item.title)}
                             </p>
