@@ -10,7 +10,7 @@ const normalizeTitle = (title: string): string => {
   return title;
 };
 
-const extractLocale = (path: string[]): [string[], string] => {
+const extractLocale = (path: string[]): [string[], string | undefined] => {
   const str = path.join("/");
   const match = /\/(en-US|ja-JP)$/.exec(str);
   if (match) {

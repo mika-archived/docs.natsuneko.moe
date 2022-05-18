@@ -6,6 +6,7 @@ import { allWikis } from "contentlayer/generated";
 import { normalizePath, normalizeTitle, extractLocale } from "utils/contents";
 
 import type { GetStaticProps } from "next";
+import { useRouter } from "next/router";
 
 type PathProps = {
   locale;
@@ -52,6 +53,7 @@ const getStaticProps: GetStaticProps<PageProps, PathProps> = async ({
 
 const Home: React.VFC<PageProps> = ({ categories }) => {
   const { t } = useTranslation("common");
+  const router = useRouter();
 
   return (
     <>
@@ -76,7 +78,11 @@ const Home: React.VFC<PageProps> = ({ categories }) => {
                   </h4>
                   <ul className="px-4 py-2">
                     {items.map((item) => {
-                      const [slug] = extractLocale(normalizePath(item.path));
+                      const [slug, locale] = extractLocale(
+                        normalizePath(item.path)
+                      );
+                      if (locale && router.locale !== locale) return;
+
                       const url = slug.join("/");
 
                       return (
