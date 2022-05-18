@@ -57,14 +57,15 @@ const getStaticProps: GetStaticProps<PageProps, PathProps> = async ({
     alLEntries.find((w) => {
       return isArrayEquals(
         [...params.slug, locale],
-        [...normalizePath(w.slug), w.lang].filter((w) => w !== undefined)
+        [...normalizePath(w.slug)].filter((w) => w !== undefined)
       );
     }) ??
     alLEntries.find((w) => {
       return isArrayEquals([...params.slug], [...normalizePath(w.slug)]);
     });
-  const hasCategory = (obj: Blog | Wiki): obj is Wiki => {
-    return Object.prototype.hasOwnProperty.call(obj, "category");
+
+  const hasCategory = (obj?: Blog | Wiki): obj is Wiki => {
+    return obj && Object.prototype.hasOwnProperty.call(obj, "category");
   };
   const items = allWikis
     .filter((w) => {
