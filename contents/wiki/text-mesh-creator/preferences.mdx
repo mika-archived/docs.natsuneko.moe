@@ -1,0 +1,47 @@
+---
+title: 設定一覧 - TextMesh Creator
+date: 2022/05/21
+lang: ja-JP
+category: TextMesh Creator
+priority: 4
+sidebar: true
+---
+
+| Key                       | Type                                                        | Description                                                                                 |
+| ------------------------- | ----------------------------------------------------------- | :------------------------------------------------------------------------------------------ |
+| `Strings` \*              | `string`                                                    | テキストメッシュを生成したい文字もしくは文字列                                              |
+| `Rotation X`              | `float`                                                     | 生成する文字の X 軸回転角度                                                                 |
+| `Rotation Y`              | `float`                                                     | 生成する文字の Y 軸回転角度                                                                 |
+| `Rotation Z`              | `float`                                                     | 生成する文字の Z 軸回転角度                                                                 |
+| `Scale X`                 | `float`                                                     | 生成する文字の X 軸スケール                                                                 |
+| `Scale Y`                 | `float`                                                     | 生成する文字の Y 軸スケール                                                                 |
+| `Scale Z`                 | `float`                                                     | 生成する文字の Z 軸スケール                                                                 |
+| `Font` \*                 | `string`                                                    | フォントファイルへの絶対パス                                                                |
+| `Separate By`             | `Space \| Tab \| Character \| None`                         | 文字列の区切りアルゴリズム (ref: [区切りアルゴリズムについて](#区切りアルゴリズムについて)) |
+| `Size`                    | `float`                                                     | フォントサイズ                                                                              |
+| `Thickness`               | `float`                                                     | 文字の太さ                                                                                  |
+| `Horizontal Alignment`    | `Left \| Center \| Right \| Justify \| Fkush`               | 水平方向文字揃え                                                                            |
+| `Vertical Alignment`      | `Top Baseline \| Top \| Cener \| Bottom \| Bottom Baseline` | 垂直方向文字揃え                                                                            |
+| `Characher Spacing`       | `float`                                                     | 文字間のスペース幅                                                                          |
+| `Word Spacing`            | `float`                                                     | スペース区切り単語間のスペース幅                                                            |
+| `Use Blendshape`          | `bool`                                                      | 動きません                                                                                  |
+| `Use Decimate`            | `bool`                                                      | メッシュ削減 (Decimate Modifier) を使用するかどうか                                         |
+| `Decimate Ratio`          | `float`                                                     | Decimate Modifier に渡される割合値                                                          |
+| `Separate by Loose Parts` | `bool`                                                      | 文字を単一パーツ毎に分離したメッシュとして生成するか                                        |
+| `Center to Origin`        | `bool`                                                      | メッシュの中心を Origin に設定するかどうか                                                  |
+| `Enable Preview Mode`     | `bool`                                                      | ファイル出力せずに Blender 上でメッシュだけを生成するかどうか                               |
+| `Increment From`          | `int`                                                       | ファイル出力時の連番開始数値                                                                |
+| `Export Directory`        | `string`                                                    | 出力先ディレクトリフルパス                                                                  |
+
+<small>* マークが付いているものは必須項目</small>
+
+## 区切りアルゴリズムについて
+
+区切りアルゴリズムは以下のいずれかを選択できます。
+
+| Key         | Description    |
+| ----------- | -------------- |
+| `Space`     | スペース区切り |
+| `Tab`       | TAB 区切り     |
+| `Character` | 文字区切り     |
+| `None`      | 区切らない     |

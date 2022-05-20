@@ -1,24 +1,50 @@
+import Link from "next/link";
 import ExternalLink from "./ExternalLink";
 
 const Heading = (props: any, level: number) => {
+  const anchor = encodeURIComponent(String(props.children));
   switch (level) {
     case 1:
-      return <h1 className="mt-8 text-4xl font-bold">{props.children}</h1>;
+      return (
+        <h1 className="mt-8 text-4xl font-bold" id={anchor}>
+          {props.children}
+        </h1>
+      );
 
     case 2:
-      return <h2 className="mt-6 text-3xl font-bold">{props.children}</h2>;
+      return (
+        <h2 className="mt-6 text-3xl font-bold" id={anchor}>
+          {props.children}
+        </h2>
+      );
 
     case 3:
-      return <h3 className="mt-4 text-2xl font-bold">{props.children}</h3>;
+      return (
+        <h3 className="mt-4 text-2xl font-bold" id={anchor}>
+          {props.children}
+        </h3>
+      );
 
     case 4:
-      return <h4 className="mt-3 text-xl font-bold">{props.children}</h4>;
+      return (
+        <h4 className="mt-3 text-xl font-bold" id={anchor}>
+          {props.children}
+        </h4>
+      );
 
     case 5:
-      return <h5 className="mt-2 text-lg font-bold">{props.children}</h5>;
+      return (
+        <h5 className="mt-2 text-lg font-bold" id={anchor}>
+          {props.children}
+        </h5>
+      );
 
     case 6:
-      return <h6 className="mt-1 text-base font-bold">{props.children}</h6>;
+      return (
+        <h6 className="mt-1 text-base font-bold" id={anchor}>
+          {props.children}
+        </h6>
+      );
   }
 };
 
@@ -35,16 +61,31 @@ const OrderedList = ({ children }: any) => {
 };
 
 const Hyperlink = ({ children, href }: any) => {
+  if (href.startsWith("http")) {
+    return (
+      <ExternalLink href={href} hasUnderline>
+        {children}
+      </ExternalLink>
+    );
+  }
+
+  if (href.startsWith("#")) {
+    return (
+      <a href={href} className="underline">
+        {children}
+      </a>
+    );
+  }
   return (
-    <ExternalLink href={href} hasUnderline>
-      {children}
-    </ExternalLink>
+    <Link href={href} passHref>
+      <a className="underline">{children}</a>
+    </Link>
   );
 };
 
 const Table = ({ children }: any) => {
   return (
-    <table className="block max-w-full overflow-x-auto text-sm border-collapse table-auto border-zinc-400">
+    <table className="block w-full max-w-full overflow-x-auto text-sm border-collapse table-auto border-zinc-400">
       {children}
     </table>
   );
