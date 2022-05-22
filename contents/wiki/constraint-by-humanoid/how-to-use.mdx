@@ -4,9 +4,15 @@ date: 2022/05/09
 lang: ja-JP
 category: Constraint by Humanoid
 priority: 2
-sidebar:
-  - /constraint-by-humanoid/
-  - /constraint-by-humanoid/installation/
-  - /constraint-by-humanoid/how-to-use/
-  - /constraint-by-humanoid/changelog/
+sidebar: true
 ---
+
+Unity メニューバー `NatsunekoLaboratory` → `Constraint by Humanoid` より、専用エディターを開いてください。  
+開いた後、 `Source GameObject` に動作をコピーしたい元となる Humanoid Rig に対応した GameObject を設定します。  
+同様に、 `Destination GameObject` に対しても設定を行います。
+
+このとき、動作を除外したい部分は、 `Exclude GameObjects` を設定することで、該当部分の設定は除外されます。  
+次に、どのような Constraint を設定したいかを選択します。  
+基本的には Rotation Constraint を使います。
+
+最後に、 `Apply Changes` をクリックすれば、 Constraint が自動設定されます。
