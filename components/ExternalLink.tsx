@@ -18,7 +18,12 @@ const ExternalLink: React.FC<Props> = ({
   const str = classNames.join(" ");
 
   return (
-    <a className={str} href={href} target="_blank" rel="noopener noreferrer">
+    <a
+      className={`text-theme-link ${str}`}
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       {children}
     </a>
   );

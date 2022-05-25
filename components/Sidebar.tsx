@@ -12,7 +12,7 @@ const Sidebar: React.VFC<Props> = ({ items }) => {
   const router = useRouter();
 
   return (
-    <div className="w-64 h-full px-2 pt-4 mr-4 border-r border-neutral-400">
+    <div className="h-full px-2 pt-4 mr-4">
       <div className="my-2">
         <h4 className="text-xl font-bold">{items[0].title}</h4>
       </div>
@@ -23,7 +23,7 @@ const Sidebar: React.VFC<Props> = ({ items }) => {
           return (
             <li key={item.url} className="my-2 cursor-pointer">
               <InternalLink href={item.url}>
-                <p className={isVisit ? "text-orange-600 font-bold" : ""}>
+                <p className={isVisit ? " text-theme-primary font-bold" : ""}>
                   {normalizeTitle(item.title)}
                 </p>
               </InternalLink>

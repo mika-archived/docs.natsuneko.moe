@@ -48,6 +48,14 @@ const Heading = (props: any, level: number) => {
   }
 };
 
+const Code = (props: any) => {
+  return (
+    <code className="font-mono break-words whitespace-pre-wrap">
+      {props.children}
+    </code>
+  );
+};
+
 const Paragraph = (props: any) => {
   return <p className="my-2">{props.children}</p>;
 };
@@ -71,14 +79,14 @@ const Hyperlink = ({ children, href }: any) => {
 
   if (href.startsWith("#")) {
     return (
-      <a href={href} className="underline">
+      <a href={href} className="underline text-theme-primary">
         {children}
       </a>
     );
   }
   return (
     <Link href={href} passHref>
-      <a className="underline">{children}</a>
+      <a className="underline text-theme-primary">{children}</a>
     </Link>
   );
 };
@@ -130,6 +138,7 @@ const Markdown = {
   h4: (props) => Heading(props, 4),
   h5: (props) => Heading(props, 5),
   h6: (props) => Heading(props, 6),
+  code: Code,
   p: Paragraph,
   ul: UnorderedList,
   ol: OrderedList,

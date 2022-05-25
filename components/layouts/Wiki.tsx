@@ -1,10 +1,9 @@
-import React, { useState } from "react";
-import Head from "next/head";
+import React, { useContext, useState } from "react";
 import { normalizeTitle } from "utils/contents";
 
 import Sidebar from "components/Sidebar";
-import FloatingSidebar from "components/FloatingSidebar";
 import WikiHeader from "components/WikiHeader";
+import Drawer, { DrawerContext } from "components/Drawer";
 
 type Props = {
   title: string;
@@ -12,41 +11,28 @@ type Props = {
 };
 
 const Layout: React.FC<Props> = ({ title, sidebar, children }) => {
-  const [state, setState] = useState(false);
-
-  const onClickHamburger = (state) => {
-    setState(state);
-  };
-
-  const onClickItem = () => {
-    setState(false);
-  };
+  const context = useContext(DrawerContext);
 
   return (
-    <div className="flex flex-col w-full h-full pb-4 mx-auto md:container md:flex-row">
+    <div className="flex flex-col w-full h-full mx-auto md:container md:flex-row">
       {sidebar && (
         <>
-          <div className="hidden shrink-0 md:block">
+          <div className="hidden w-64 h-full mr-4 border-r shrink-0 md:block border-neutral-200">
             <Sidebar items={sidebar} />
           </div>
-          <div className="block md:hidden">
-            <WikiHeader
-              onToggleHamburgerState={onClickHamburger}
-              parentState={state}
-            />
-          </div>
+          <Drawer isOpen={context.drawerState} onClose={() => {}}>
+            <div className="z-50 w-full bg-white">
+              <Sidebar items={sidebar} />
+            </div>
+          </Drawer>
         </>
       )}
-      {state ? (
-        <div className="container w-full mx-auto">
-          <FloatingSidebar items={sidebar} onClickItem={onClickItem} />
-        </div>
-      ) : (
-        <div className="container w-full mx-auto">
-          <h2 className="my-4 text-4xl font-bold">{normalizeTitle(title)}</h2>
-          <div>{children}</div>
-        </div>
-      )}
+      <div className="container w-full mx-auto">
+        <h2 className="pb-4 my-4 text-4xl font-bold border-b border-neutral-200">
+          {normalizeTitle(title)}
+        </h2>
+        <div>{children}</div>
+      </div>
     </div>
   );
 };

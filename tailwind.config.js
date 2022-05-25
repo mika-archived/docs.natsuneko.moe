@@ -4,7 +4,50 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        theme: {
+          primary: "#2081e2",
+          secondary: "#1d74cb",
+          white: "#ffffff",
+          black: "#332633",
+          text: "#353840",
+          link: "#2081e2",
+          graytext: "#4f5a66",
+          bg: "#ebf4fc",
+        },
+        sakura: {
+          primary: "#ff90bf",
+          secondary: "#ff7baf",
+          white: "#ffffff",
+          black: "#eeeeee",
+          text: "#353840",
+          link: "#ff7baf",
+          graytext: "#4f5a66",
+          bg: "#ebf4fc",
+        },
+        mono: {
+          primary: "#f4f5f7",
+          secondary: "#d2d6d9",
+          white: "#332633",
+          black: "#eeeeee",
+          text: "#353840",
+          link: "#2081e2",
+          graytext: "#4f5a66",
+          bg: "#ebf4fc",
+        },
+        ocean: {
+          primary: "#2081e2",
+          secondary: "#1d74cb",
+          white: "#ffffff",
+          black: "#332633",
+          text: "#353840",
+          link: "#2081e2",
+          graytext: "#4f5a66",
+          bg: "#ebf4fc",
+        },
+      },
+    },
   },
   plugins: [
     function ({ addComponents }) {
