@@ -13,6 +13,8 @@ const Sidebar: React.VFC<Props> = ({ items, style }) => {
   const titleFont = style === "sidebar" ? "text-xl" : "text-2xl";
   const sectionFont = style === "sidebar" ? "text-md" : "text-lg";
 
+  console.log(items);
+
   return (
     <div className="h-full px-2 pt-4 mr-4">
       <div className="my-2">

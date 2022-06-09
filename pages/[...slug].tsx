@@ -54,6 +54,7 @@ const getStaticProps: GetStaticProps<PageProps, PathProps> = async ({
   locale,
 }) => {
   const alLEntries = [...allBlogs, ...allWikis];
+  console.log([...params.slug, locale]);
   const entry =
     alLEntries.find((w) => {
       return isArrayEquals(
@@ -63,12 +64,31 @@ const getStaticProps: GetStaticProps<PageProps, PathProps> = async ({
     }) ??
     alLEntries.find((w) => {
       return isArrayEquals([...params.slug], [...normalizePath(w.slug)]);
+    }) ??
+    alLEntries.find((w) => {
+      return isArrayEquals(
+        [...params.slug, "index", locale],
+        [...normalizePath(w.slug)].filter((w) => w !== undefined)
+      );
     });
 
   const hasCategory = (obj?: Blog | Wiki): obj is Wiki => {
     return obj && Object.prototype.hasOwnProperty.call(obj, "category");
   };
   const items = allWikis
+    .map((w) => ({
+      ...w,
+      normalizedSlug: extractLocale(normalizePath(w.slug))[0].join("/"),
+    }))
+    .filter((w) => {
+      const [path, mdxLocale] = extractLocale(normalizePath(w.slug));
+      if (mdxLocale) {
+        return locale === mdxLocale;
+      }
+
+      return true;
+    })
+    .map((w) => ({ ...w, slug: w.normalizedSlug }))
     .filter((w) => {
       if (hasCategory(w) && hasCategory(entry)) {
         return entry.category === w.category;
@@ -77,6 +97,8 @@ const getStaticProps: GetStaticProps<PageProps, PathProps> = async ({
       return false;
     })
     .sort((a, b) => a.priority - b.priority);
+
+  console.log(entry);
 
   const fallback = !/\.(ja-JP|en-US)\.mdx$/.exec(entry._raw.sourceFileName);
 
