@@ -1,0 +1,32 @@
+---
+title: 使い方 - Drag and Drop Support
+date: 2022/06/07
+lang: ja-JP
+category: Drag and Drop Support
+priority: 3
+sidebar: true
+---
+
+## 起動
+
+Drag and Drop Support は、 Blender の `--python` 引数などを使用しているため、通常通りの起動では使用できません。  
+そのため、専用のランチャーから起動させてください。
+
+ダウンロードした ZIP アーカイブを解凍し、同封の `blender-launcher.exe` 経由で起動します。  
+起動方法は以下の通りです。
+
+```bash
+$ ./blender-launcher.exe /path/to/blender.exe
+```
+
+コマンドラインから起動し、 `/path/to/blender.exe` の場所に、 Blender の実行ファイルのフルパスを指定してください。
+しばらくすると起動するので、その後は次のステップへ進みます。
+
+## リスナーのスタート
+
+Drag and Drop でファイルをインポートするには、拡張機能を有効にする必要があります。  
+Blender の Layout View や Modeling View などのサイドバーから、 `Drag and Drop Support` タブを開きます。  
+開いた後、 `Start Listener` というボタンがあるので、ボタンをクリックしてください。
+
+クリック後、 `Stop Listener` という表示になれば起動しているので、その後はファイルを 3D View などにドロップしてください。  
+ドロップしてから数秒すると、ファイルが `(0, 0, 0)` に読み込まれます。

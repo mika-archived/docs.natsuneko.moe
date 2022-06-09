@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Alert from "./Alert";
 import ExternalLink from "./ExternalLink";
 
 const Heading = (props: any, level: number) => {
@@ -147,6 +148,9 @@ const Markdown = {
   td: TableData,
   th: TableHeader,
   thead: TableHead,
+
+  // MDX Components
+  Alert,
 };
 
 export default Markdown;

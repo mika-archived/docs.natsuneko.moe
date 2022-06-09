@@ -91,7 +91,9 @@ const Home: React.VFC<PageProps> = ({ categories }) => {
                       return (
                         <li key={url}>
                           <InternalLink href={url}>
-                            {normalizeTitle(item.title)}
+                            <span className="underline text-theme-black">
+                              {normalizeTitle(item.title)}
+                            </span>
                           </InternalLink>
                         </li>
                       );

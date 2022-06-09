@@ -18,11 +18,11 @@ const Layout: React.FC<Props> = ({ title, sidebar, children }) => {
       {sidebar && (
         <>
           <div className="hidden w-64 h-full mr-4 border-r shrink-0 md:block border-neutral-200">
-            <Sidebar items={sidebar} />
+            <Sidebar items={sidebar} style="sidebar" />
           </div>
           <Drawer isOpen={context.drawerState} onClose={() => {}}>
             <div className="z-50 w-full bg-white">
-              <Sidebar items={sidebar} />
+              <Sidebar items={sidebar} style="drawer" />
             </div>
           </Drawer>
         </>

@@ -3,6 +3,7 @@ import { useMDXComponent } from "next-contentlayer/hooks";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { NextSeo } from "next-seo";
 import { allBlogs, allWikis } from "contentlayer/generated";
+import Alert from "components/Alert";
 import withLayout from "hoc/withLayout";
 import { normalizePath, extractLocale, isArrayEquals } from "utils/contents";
 
@@ -93,7 +94,7 @@ const getStaticProps: GetStaticProps<PageProps, PathProps> = async ({
 };
 
 const Entry: React.VFC<PageProps> = ({ entry, sidebar, fallback }) => {
-  const Component = useMDXComponent(entry.body.code, {});
+  const Component = useMDXComponent(entry.body.code);
 
   return (
     <>
