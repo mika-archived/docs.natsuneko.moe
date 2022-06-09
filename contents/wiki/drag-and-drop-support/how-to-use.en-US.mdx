@@ -1,0 +1,25 @@
+---
+title: How to use - Drag and Drop Support
+date: 2022/06/07
+lang: ja-JP
+category: Drag and Drop Support
+priority: 3
+sidebar: true
+---
+
+## Launch
+
+Drag and Drop Support uses `--python` arguments, then cannot be used with normal launch.
+Therfore, launch Blender from a dedicated launcher.
+
+Unzip the downloaded ZIP archive and launch it via the enclosed `blender-launcher-ui.exe`.  
+Once launched, specify the path to `blender.exe` and press the bottom button.
+
+## Start Listener
+
+To import files via Drag-and-Drop, you need to enable the extension.  
+Open the `Drag and Drop Support` tab from the sidebar of Layout View, Modeling View, and other views in Blender.  
+After opening it, you will see a button called `Start Listener`, click on the button.
+
+After clicking the button, if you see `Stop Listener`, it has been started the listener, and you can then drop the file into the 3D View, and etc.  
+A few seconds after the file has been dropped, the file will be loaded into `(0, 0, 0)`.
