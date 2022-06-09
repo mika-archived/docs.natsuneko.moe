@@ -54,7 +54,6 @@ const getStaticProps: GetStaticProps<PageProps, PathProps> = async ({
   locale,
 }) => {
   const alLEntries = [...allBlogs, ...allWikis];
-  console.log([...params.slug, locale]);
   const entry =
     alLEntries.find((w) => {
       return isArrayEquals(
@@ -97,8 +96,6 @@ const getStaticProps: GetStaticProps<PageProps, PathProps> = async ({
       return false;
     })
     .sort((a, b) => a.priority - b.priority);
-
-  console.log(entry);
 
   const fallback = !/\.(ja-JP|en-US)\.mdx$/.exec(entry._raw.sourceFileName);
 
