@@ -1,0 +1,23 @@
+---
+title: デバッグ方法 - Drag and Drop Support
+date: 2022/06/08
+lang: ja-JP
+category: Drag and Drop Support
+priority: 65
+sidebar: true
+---
+
+Drag and Drop Support では環境固有の問題が起こることがあるため、デバッグ用のコンソール出力があります。  
+以下の方法でツールを起動することで行えます。
+
+1. Blender を通常通り起動する
+2. タスクマネージャーから `blender.exe` のプロセス ID を確認する
+3. コマンドプロンプトを開く
+4. コマンドプロンプトから、 `./blender-hook.exe <Blender のプロセス ID>` を実行する
+   - 例： `./blender-hook.exe 12345`
+5. Blender で[使用方法](./how-to-use) に従った操作を行う
+6. Drag-and-Drop を行う
+7. Blender を終了する
+
+終了後、センシティブな情報 (例: パス名) を除いたテキストを作者の Discord や GitHub の Issues に書き込んでください。  
+また、使用しているセキュリティソフトがありましたら、それもお伝えください。
