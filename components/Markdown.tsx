@@ -50,8 +50,18 @@ const Heading = (props: any, level: number) => {
 };
 
 const Code = (props: any) => {
+  if (props.className) {
+    return (
+      <div className="px-2 py-2 my-2 rounded bg-theme-bg">
+        <code className="font-mono break-words whitespace-pre-wrap">
+          {props.children}
+        </code>
+      </div>
+    );
+  }
+
   return (
-    <code className="font-mono break-words whitespace-pre-wrap">
+    <code className="px-1 py-1 mx-1 font-mono break-words whitespace-pre-wrap rounded bg-theme-bg">
       {props.children}
     </code>
   );
