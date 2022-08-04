@@ -1,0 +1,21 @@
+---
+title: Getting Started with Visual Studio - Udon Analyzer
+date: 2022/08/05
+lang: ja-JP
+category: Udon Analyzer
+priority: 10
+sidebar: true
+---
+
+Udon Analyzer を Visual Studio で使うためには、2 種類の方法があります。
+
+## 1. VSIX を用いてグローバルにインストールする
+
+同梱の `.vsix` ファイルを用いて、 Visual Studio そのものへのインストールが可能です。  
+その場合、ワークスペースに関わらず、 UdonSharp を検出できた場合は自動で解析を開始します。  
+なお、 `udon_analyzer.api_dictionary_mode = direct` を使用している場合は、 API の解析が無効となります。
+
+## 2. Unity Integration 経由で使用する
+
+同梱の `.unitypackage` ファイルを用いて、 UdonSharp がインストールされている Unity プロジェクトへインポートすることで、自動的に使用可能になります。
+アップデートが簡単、他のエディターでも使えるという点で、こちらを推奨します。

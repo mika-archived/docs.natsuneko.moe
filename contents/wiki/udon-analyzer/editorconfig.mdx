@@ -1,0 +1,58 @@
+---
+title: EditorConfig - Udon Analyzer
+date: 2022/08/05
+lang: ja-JP
+category: Udon Analyzer
+priority: 20
+sidebar: true
+---
+
+Udon Analyzer では、 EditorConfig を使用することで、 Analyzer の動作を変更することが出来ます。
+
+## API Dictionary Mode
+
+API の取得方法を設定することが出来ます。規定値は `direct` で、 Unity Integration で生成された `PublicAPI.Shipped.txt` を元に API の使用可否を判断します。  
+使用可能な値は以下の通りです：
+
+| Key          | Since | Value                                                                                                                          |
+| ------------ | ----- | ------------------------------------------------------------------------------------------------------------------------------ |
+| `direct`     | 1.0.0 | `PublicAPI.Shipped.txt` から API の使用可否を判断します。                                                                      |
+| `reflection` | 1.1.0 | VRChat のアセンブリに対してリフレクション経由でアクセスし、 API の使用可否を判断します。メモリ容量とストレージを必要とします。 |
+| `internal`   | 1.1.0 | Analyzer 内部に同梱されている API ディクショナリを使用します。 Udon SDK の更新時に、 Analyzer の更新も必要です。               |
+
+設定例：
+
+```editorconfig
+[*.cs]
+udon_analyzer.api_dictionary_mode = direct
+```
+
+## Network Dictionary Mode
+
+API の取得方法を設定することが出来ます。規定値は `internal` で、 Analyzer 内部に同梱されている API ディクショナリを使用します。
+使用可能な値は以下の通りです：
+
+| Key          | Since | Value                                                                                                                          |
+| ------------ | ----- | ------------------------------------------------------------------------------------------------------------------------------ |
+| `direct`     | 1.1.0 | `PublicAPI.Shipped.txt` から API の使用可否を判断します。                                                                      |
+| `reflection` | 1.1.0 | VRChat のアセンブリに対してリフレクション経由でアクセスし、 API の使用可否を判断します。メモリ容量とストレージを必要とします。 |
+| `internal`   | 1.0.0 | Analyzer 内部に同梱されている API ディクショナリを使用します。 Udon SDK の更新時に、 Analyzer の更新も必要です。               |
+
+設定例：
+
+```editorconfig
+[*.cs]
+udon_analyzer.network_dictionary_mode = internal
+```
+
+## Enable Workspace Analyzing
+
+ワークスペース (Visual Studio のソリューション、 Visual Studio Code のフォルダー) 全体を解析対象とします。  
+これによって、 `UdonSharpBehaviour` を継承していないクラスを解析対象に含めることが可能です。
+
+設定例：
+
+```editorconfig
+[*.cs]
+udon_analyzer.enable_workspace_analyzing = true
+```

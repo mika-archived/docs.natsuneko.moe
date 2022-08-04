@@ -1,0 +1,35 @@
+---
+title: Getting Started with Visual Studio Code - Udon Analyzer
+date: 2022/08/05
+lang: ja-JP
+category: Udon Analyzer
+priority: 11
+sidebar: true
+---
+
+Udon Analyzer を Visual Studio Code で使うためには、2 種類の方法があります。
+
+## 1. VSIX を用いてグローバルにインストールする
+
+同梱の VSCode 用の `.vsix` ファイルを用いて、 Visual Studio Code そのものへのインストールが可能です。  
+その場合、ワークスペースに関わらず、 UdonSharp を検出できた場合は自動で解析を開始します。  
+なお、 `udon_analyzer.api_dictionary_mode = direct` を使用している場合は、 API の解析が無効となります。
+
+## 2. Unity Integration 経由で使用する
+
+同梱の `.unitypackage` ファイルを用いて、 UdonSharp がインストールされている Unity プロジェクトへインポートすることで、自動的に使用可能になります。
+アップデートが簡単、他のエディターでも使えるという点で、こちらを推奨します。
+
+なお、こちらの場合は、別途以下の設定が必要になる場合があります。
+
+```json
+// omnisharp.json をリポジトリルートへ作成してください。
+{
+  "RoslynExtensionsOptions": {
+    "EnableAnalyzersSupport": true,
+    // Roslynator などをインストールしている場合は、 **追記** してください。
+    // Roslynator はグローバルの omnisharp.json へ追記を行うため、優先度の問題で打ち消されます。
+    "LocationPaths": ["./Assets/NatsunekoLaboratory/UdonAnalyzer/Analyzers"]
+  }
+}
+```
