@@ -105,6 +105,20 @@ module.exports = withContentlayer({
         locale: false,
         permanent: true,
       },
+      {
+        source: "/en-US/refined-animation-property/:path*",
+        // prettier-ignore
+        destination: "https://docs.natsuneko.cat/en-us/refined-animation-property/",
+        locale: false,
+        permanent: true,
+      },
+      {
+        source: "/ja-JP/refined-animation-property/:path*",
+        // prettier-ignore
+        destination: "https://docs.natsuneko.cat/ja-jp/refined-animation-property/",
+        locale: false,
+        permanent: true,
+      },
     ];
   },
 });
