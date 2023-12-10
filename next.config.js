@@ -119,6 +119,50 @@ module.exports = withContentlayer({
         locale: false,
         permanent: true,
       },
+      {
+        source: "/en-US/udon-analyzer/:path*",
+        // prettier-ignore
+        destination: "https://docs.natsuneko.cat/en-us/udon-analyzer/",
+        locale: false,
+        permanent: true,
+      },
+      {
+        source: "/ja-JP/udon-analyzer/:path*",
+        // prettier-ignore
+        destination: "https://docs.natsuneko.cat/ja-jp/udon-analyzer/",
+        locale: false,
+        permanent: true,
+      },
+      {
+        source: "/en-US/fbx-batch-export/:path*",
+        // prettier-ignore
+        destination: "https://docs.natsuneko.cat/en-us/fbx-batch-export/",
+        locale: false,
+        permanent: true,
+      },
+      {
+        source: "/ja-JP/fbx-batch-export/:path*",
+        // prettier-ignore
+        destination: "https://docs.natsuneko.cat/ja-jp/fbx-batch-export/",
+        locale: false,
+        permanent: true,
+      },
+
+      // others
+      {
+        source: "/en-US/:path*",
+        // prettier-ignore
+        destination: "https://docs.natsuneko.cat/en-us/",
+        locale: false,
+        permanent: true,
+      },
+      {
+        source: "/ja-JP/:path*",
+        // prettier-ignore
+        destination: "https://docs.natsuneko.cat/ja-jp/",
+        locale: false,
+        permanent: true,
+      },
     ];
   },
 });
